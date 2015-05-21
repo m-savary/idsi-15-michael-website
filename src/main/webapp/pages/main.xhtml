@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../templates/layout.xhtml">
+  <ui:define name="content">
+  <!--
+  - modification du message d'accueil (welcomeText) dans chaque langue
+  - les labels sont édité sous src/main/resources/ch/idsi2015/gmobility/jsf/i18n/messages_"langue".properties
+  -->   
+    <p:panel id="mainPanel" toggleable="true" toggleSpeed="250">
+      <f:facet name="header">
+        <h:outputFormat value="#{messages.label_welcome_titlepane}">
+          <f:param value="#{applicationBean.appName}" />
+        </h:outputFormat>
+      </f:facet>
+      <p />
+      <h:outputText id="welcomeText" value="#{messages.label_welcome_text}" />
+      <p />
+      <div id="media"></div>
+    </p:panel>
+    <br />
+    <!--
+    - deux champs distinct (fieldset) rétractables et rétractés par défaut.
+    - une grille (panelGrid) de deux colonnes pour chaque champ avec le screenshot du service en première et du texte en seconde
+    -->
+    <p:fieldset legend="Roulez Jeunève" toggleable="true" toggleSpeed="250" collapsed="true">
+    	<h:panelGrid columns="2" cellspacing="5" cellpadding="5">
+    		<p:graphicImage library="images" name="rgscreen.png" />
+    		<h:outputText >
+    			<h1>Améliorer la mobilité à Genève avec des itinéraires cyclables efficaces, sûrs et plus agréables.</h1>
+    			Cette application permet d'optimiser vos déplacements à vélo au sein du canton de Genève, 
+    			en s'appuyant sur l'utilisation de données ouvertes du système d'information du territoire à Genève (SITG).<br />
+    			Quatre itinéraires cyclables, proposé à partir de la localisation de l'utilisateur et d'une adresse d'arrivée spécifiée par ce dernier, 
+    			sont calculés selon les critères suivant : Temps, Distance, Sécurité et Effort. <br />
+    			<h4>Mode d'emploi</h4>
+    			<ul>
+    				<li>Le point de départ est défini automatiquement par localisation (autoriser cette dernière sur votre appareil pour que le programme fonctionne).</li>
+    				<li>Spécifier l'adresse de destination (si besoin, le numéro de rue peut être définit par la suite).</li>
+    				<li>Lancer la recherche.</li>
+    				<li>Sélectionner l'itinéraire souhaité en fonction du critère de différentiation.</li>
+    				<li>Ajouter à volonté les points d'intérêt via les cases à cocher.</li>
+    			</ul>
+    		</h:outputText>
+    		<!--
+    		- ajout d'une icone ui-icone de jQuery devant le text des boutons.
+    		- une action window.open('lien') pour ouvrir les liens externes dans une nouvelle fenêtre/onglet.    		
+    		-->
+    		<p:button value="App Android" onclick="window.open('https://play.google.com/store/apps/details?id=ch.opengeneva.roulezjeuneve')" icon="ui-icon-suitcase"></p:button>
+    		<p:button value="Application web" onclick="window.open('http://mashups.unige.ch/2014-2015/olivier.glaus@bluewin.ch/OpenGeneva/roulezjeuneve.html')" icon="ui-icon-transferthick-e-w"></p:button>
+    	</h:panelGrid>
+    </p:fieldset>
+    <br />
+    <p:fieldset legend="Carte isochrone" toggleable="true" toggleSpeed="250" collapsed="true">
+    	<h:panelGrid columns="2" cellspacing="5" cellpadding="5">
+    		<p:graphicImage library="images" name="isoch_scr.jpg" />
+    		<h:outputText>
+    			<h1>Optimiser vos déplacement en transport publique en fonction de la date et l'heure du départ.</h1>
+    			Cette carte temporelle permet à partir de n'importe quel arrêt des Transports Publiques Genevois de montrer la distance de parcours possible dans un intervalle de temps.<br />
+    			Chaque couche en plus depuis la position de départ représente 5 minutes de trajet supplémentaires, et cela jusqu'à 40 minutes de trajet.
+    			Faute de bus/tram et/ou correspondance, le programme renverra ces couches de couleurs en cercles parfaits, pour symboliser le temps de déplacement à pied uniquement.
+    			<h4>Mode d'emploi</h4>
+    			<ul>
+    				<li>Choisir arrêt TPG, ainsi que la date et l'heure du départ souhaité.</li>
+    				<li>Chaque couche de couleur représente un intervalle de 5 minutes de trajet.</li>
+    				<li>Lorsque vous rencontrez des couches en cercle parfait, c'est qu'il n'y a plus de services de transports à l'heure choisie, 
+    				et c'est donc le temps de marche théorique qui prend le relais.</li>
+    			</ul>
+    		</h:outputText>
+    		<!--
+    		- ajout d'une icone ui-icone de jQuery devant le text du bouton.
+    		- une action window.open('lien') pour ouvrir le lien externe dans une nouvelle fenêtre/onglet.    		
+    		-->    		
+    		<p:button value="Télécharger" onclick="window.open('https://drive.google.com/file/d/0B-W2b0TKxGZIdndSdDBfcW0zVUU')"  icon="ui-icon-disk" ></p:button>
+    	</h:panelGrid>
+    </p:fieldset>
+  </ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition>
+<!-- 
+- Recomposition du menu:
+- Effacement du menue pré-programmé par spring Roo.
+- intégration des liens externes vers les services RoulezJeunève et Carte Isochrone.
+- insertion d'icone ui-icone de jQuery pour chaque lien avec target="_blank" pourl'ouvrir dans une nouvelle fenêtre/onglet.
+-->
+  <p:menu style="width:198px" >
+  	<p:submenu label="Roulez Jeunève">
+  		<p:menuitem value="Application web" url="http://mashups.unige.ch/2014-2015/olivier.glaus@bluewin.ch/OpenGeneva/roulezjeuneve.html" icon="ui-icon-transferthick-e-w" target="_blank"/>
+  		<p:menuitem value="App Android" url="https://play.google.com/store/apps/details?id=ch.opengeneva.roulezjeuneve" icon="ui-icon-suitcase" target="_blank"/>
+  	</p:submenu>
+  	<p:submenu label="Carte isochrone">
+  		<p:menuitem value="Télécharger" url="https://drive.google.com/file/d/0B-W2b0TKxGZIdndSdDBfcW0zVUU" icon="ui-icon-disk" target="_blank"/>
+  	</p:submenu>
+  </p:menu>
+</ui:composition>
+</html>
